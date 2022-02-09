@@ -1,6 +1,6 @@
 import { dbService } from "fbase";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const PlantPlus = () => {
   const [photo, setPhoto] = useState("");
@@ -8,7 +8,7 @@ const PlantPlus = () => {
   const [nickname, setNickname] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [waterday, setWaterday] = useState("");
-  const history = useHistory();
+  const history = useNavigate();
 
   const onSubmit = async (event) => {
     event.preventDefault();

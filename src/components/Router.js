@@ -1,26 +1,24 @@
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { Link, Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import Login from "routes/Login";
 import PlantList from "routes/PlantList";
 import PlantPlus from "routes/PlantPlus";
 import DiaryList from "routes/DiaryList";
 
-const AppRouter = ({ loginIn }) => {
+const AppRouter = ({ loginIn, userObj }) => {
   return (
     <Router>
-      <Switch>
+      <Routes>
         <>
           {loginIn ? (
-            <Route exact path="/" component={PlantList}></Route>
+            <Route path="/*" element={<PlantList />} exact={true} />
           ) : (
-            <Route exact path="/">
-              <Login />
-            </Route>
+            <Route path="/Login" element={<Login />} />
           )}
-          <Route path="/PlantList" component={PlantList}></Route>
-          <Route path="/DiaryList" component={DiaryList}></Route>
-          <Route path="/PlantPlus" component={PlantPlus}></Route>
+          <Route path="/PlantList" element={<PlantList />}></Route>
+          <Route path="/DiaryList" element={<DiaryList />}></Route>
+          <Route path="/PlantPlus" element={<PlantPlus />}></Route>
         </>
-      </Switch>
+      </Routes>
     </Router>
   );
 };

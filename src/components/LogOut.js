@@ -1,8 +1,8 @@
 import { authService } from "fbase";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LogOut = () => {
-  const history = useHistory();
+  const history = useNavigate();
   const onLogOutClick = () => {
     authService.signOut();
     history.push("/");

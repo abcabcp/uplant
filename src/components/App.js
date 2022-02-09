@@ -4,11 +4,14 @@ import { authService } from "fbase";
 
 function App() {
   const [init, setInit] = useState(false);
-  const [loginIn, setLoggedIn] = useState();
+  const [loginIn, setLoggedIn] = useState(false);
+  const [userObj, setUserObj] = useState(null);
+
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
         setLoggedIn(user);
+        setUserObj(user);
       } else {
         setLoggedIn(false);
       }
@@ -17,7 +20,7 @@ function App() {
   }, []);
   return (
     <>
-      {init ? <AppRouter loginIn={loginIn} /> : "로딩 중..."}
+      {init ? <AppRouter loginIn={loginIn} userObj={userObj} /> : "로딩 중..."}
       <footer>&copy; {new Date().getFullYear()}Uplant</footer>
     </>
   );
