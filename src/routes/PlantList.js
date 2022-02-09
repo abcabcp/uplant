@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import LogOut from "components/LogOut";
+import PlantCard from "components/PlantCard";
 
 const PlantList = () => {
   return (
@@ -8,6 +9,7 @@ const PlantList = () => {
         <Link to="/PlantList">plant</Link>
         <Link to="/DiaryList">diary</Link>
         <Link to="/PlantPlus">+</Link>
+        <PlantCard />
         <LogOut />
       </div>
     </>

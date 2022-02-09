@@ -1,5 +1,6 @@
 import { dbService } from "fbase";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const PlantPlus = () => {
   const [photo, setPhoto] = useState("");
@@ -7,21 +8,24 @@ const PlantPlus = () => {
   const [nickname, setNickname] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [waterday, setWaterday] = useState("");
+  const history = useHistory();
 
   const onSubmit = async (event) => {
     event.preventDefault();
+
     await dbService.collection("plants").add({
       p_kind: kind,
       p_nickname: nickname,
       p_birthDate: birthDate,
       p_waterday: waterday,
-
       createdAt: Date.now(),
     });
+
     setKind("");
     setNickname("");
     setBirthDate("");
     setWaterday("");
+    history.push("/PlantList");
   };
 
   const onKindChange = (event) => {
@@ -69,6 +73,7 @@ const PlantPlus = () => {
           type="text"
           placeholder="식물의 종류를 입력해주세요"
           maxLength={30}
+          required
         />
         <input
           value={nickname}
@@ -76,6 +81,7 @@ const PlantPlus = () => {
           type="text"
           placeholder="식물의 애칭을 입력해주세요"
           maxLength={30}
+          required
         />
         <input
           value={birthDate}
@@ -83,13 +89,15 @@ const PlantPlus = () => {
           type="date"
           placeholder="식물의 애칭을 입력해주세요"
           maxLength={30}
+          required
         />
         <input
           value={waterday}
           onChange={onWaterdayChange}
-          type="text"
+          type="number"
           placeholder="며칠마다 물을 마시나요? (숫자만 입력)"
           maxLength={500}
+          required
         />
         <input type="submit" value="등록 완료" />
       </form>
