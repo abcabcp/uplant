@@ -3,11 +3,8 @@ import Login from "routes/Login";
 import PlantList from "routes/PlantList";
 import PlantPlus from "routes/PlantPlus";
 import DiaryList from "routes/DiaryList";
-import { getAuth, isSignInWithEmailLink } from "firebase/auth";
 
 const AppRouter = ({ loginIn, useObj }) => {
-  const auth = getAuth();
-
   return (
     <Router>
       <Routes>

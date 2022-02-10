@@ -92,7 +92,7 @@ const PlantPlus = ({ userObj }) => {
           value={birthDate}
           onChange={onBirthDateChange}
           type="date"
-          placeholder="식물의 애칭을 입력해주세요"
+          placeholder="식물의 생일을 입력해주세요"
           maxLength={30}
           required
         />

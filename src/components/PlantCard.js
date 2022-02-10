@@ -1,6 +1,7 @@
 import { dbService } from "fbase";
 import { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Plant from "components/Plant";
 
 const PlantCard = ({ userObj }) => {
   const [plant, setPlant] = useState("");
@@ -25,15 +26,7 @@ const PlantCard = ({ userObj }) => {
   return (
     <>
       {ID_CHECK.map((plant) => (
-        <div key={plant.id}>
-          <div>이미지</div>
-          <div>
-            <h2>{plant.p_kind}</h2>
-            <div>{plant.p_nickname}</div>
-            <div>{plant.p_waterday}</div>
-            <div>{plant.p_birthDate}</div>
-          </div>
-        </div>
+        <Plant key={plant.id} PlantObj={plant} />
       ))}
     </>
   );
