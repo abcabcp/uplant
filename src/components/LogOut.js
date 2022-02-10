@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 const LogOut = () => {
   const history = useNavigate();
+
   const onLogOutClick = () => {
     authService.signOut();
-    history.push("/");
+    history("/Login");
   };
 
   return (

@@ -1,15 +1,19 @@
 import { dbService } from "fbase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const PlantPlus = () => {
+const PlantPlus = ({ userObj }) => {
   const [photo, setPhoto] = useState("");
   const [kind, setKind] = useState("");
   const [nickname, setNickname] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [waterday, setWaterday] = useState("");
-  const history = useNavigate();
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const uid = user.uid;
 
+  const history = useNavigate();
   const onSubmit = async (event) => {
     event.preventDefault();
 
@@ -18,6 +22,7 @@ const PlantPlus = () => {
       p_nickname: nickname,
       p_birthDate: birthDate,
       p_waterday: waterday,
+      p_auth: uid,
       createdAt: Date.now(),
     });
 
@@ -25,7 +30,7 @@ const PlantPlus = () => {
     setNickname("");
     setBirthDate("");
     setWaterday("");
-    history.push("/PlantList");
+    history("/PlantList");
   };
 
   const onKindChange = (event) => {

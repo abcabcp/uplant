@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import LogOut from "components/LogOut";
 import PlantCard from "components/PlantCard";
+import { authService } from "fbase";
 
-const PlantList = () => {
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+const PlantList = ({}) => {
   return (
     <>
       <div className="tab_menu">
