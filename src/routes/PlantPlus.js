@@ -1,10 +1,11 @@
-import { dbService } from "fbase";
-import { useState } from "react";
+import { dbService, storageService } from "fbase";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { v4 as uuidv4 } from "uuid";
 
 const PlantPlus = ({ userObj }) => {
-  const [photo, setPhoto] = useState("");
+  const [attachment, setAttachment] = useState("");
   const [kind, setKind] = useState("");
   const [nickname, setNickname] = useState("");
   const [birthDate, setBirthDate] = useState("");
@@ -16,6 +17,12 @@ const PlantPlus = ({ userObj }) => {
   const history = useNavigate();
   const onSubmit = async (event) => {
     event.preventDefault();
+    let attachmentUrl = "";
+    if (attachment !== "") {
+      const attachmentRef = storageService.ref().child(`${uid}/${uuidv4()}`);
+      const response = await attachmentRef.putString(attachment, "data_url");
+      attachmentUrl = await response.ref.getDownloadURL();
+    }
 
     await dbService.collection("plants").add({
       p_kind: kind,
@@ -24,13 +31,46 @@ const PlantPlus = ({ userObj }) => {
       p_waterday: waterday,
       p_auth: uid,
       createdAt: Date.now(),
+      attachmentUrl,
     });
 
     setKind("");
     setNickname("");
     setBirthDate("");
     setWaterday("");
+    setAttachment("");
+
     history("/PlantList");
+  };
+
+  const getListAsc = async () => {
+    const listAsc = await dbService
+      .collection("plants")
+      .orderBy("createAt", "asc")
+      .get();
+
+    console.log(listAsc.docs.map((doc) => doc.data()));
+  };
+
+  useEffect(() => {
+    getListAsc();
+  }, []);
+
+  const onClearAttachment = () => setAttachment("");
+
+  const onFileChange = (event) => {
+    const {
+      target: { files },
+    } = event;
+    const theFile = files[0];
+    const imgReader = new FileReader();
+    imgReader.onloadend = (finishedEvent) => {
+      const {
+        currentTarget: { result },
+      } = finishedEvent;
+      setAttachment(result);
+    };
+    imgReader.readAsDataURL(theFile);
   };
 
   const onKindChange = (event) => {
@@ -69,9 +109,11 @@ const PlantPlus = ({ userObj }) => {
     <>
       <h1>새 식물을 등록해주세요!🌹</h1>
       <form onSubmit={onSubmit}>
-        <div>
-          <button value={photo}>사진 등록</button>
-        </div>
+        <input type="file" accept="image/*" onChange={onFileChange} />
+        <button onClick={onClearAttachment}>다시 올리기</button>
+        {attachment && (
+          <img src={attachment} width="60px" height="60px" alt="나의 식물" />
+        )}
         <input
           value={kind}
           onChange={onKindChange}

@@ -1,4 +1,4 @@
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
 import { useState } from "react";
 
 const Plant = ({ PlantObj }) => {
@@ -10,13 +10,15 @@ const Plant = ({ PlantObj }) => {
 
   const onDeleteClick = async () => {
     const confirm = window.confirm("삭제하실거에요? 😿");
-    console.log(confirm);
     if (confirm) {
       await dbService.doc(`plants/${PlantObj.id}`).delete();
+      if (PlantObj.attachmentUrl !== "") {
+        await storageService.refFromURL(PlantObj.attachmentUrl).delete();
+      }
     }
   };
 
-  const toggleEdit = () => setEdit((prev) => !prev.id);
+  const toggleEdit = () => setEdit((prev) => !prev);
 
   const onNewKindChange = (event) => {
     const {
@@ -102,6 +104,14 @@ const Plant = ({ PlantObj }) => {
           <button onClick={toggleEdit}>✏</button>
           <div>이미지</div>
           <div>
+            {PlantObj.attachmentUrl && (
+              <img
+                src={PlantObj.attachmentUrl}
+                width="50px"
+                height="50px"
+                alt="식물 이미지"
+              />
+            )}
             <h2>{PlantObj.p_kind}</h2>
             <div>{PlantObj.p_nickname}</div>
             <div>{PlantObj.p_waterday}</div>

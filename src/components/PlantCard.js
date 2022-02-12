@@ -4,7 +4,6 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Plant from "components/Plant";
 
 const PlantCard = ({ userObj }) => {
-  const [plant, setPlant] = useState("");
   const [plants, setPlants] = useState([]);
   const auth = getAuth();
   const user = auth.currentUser;
