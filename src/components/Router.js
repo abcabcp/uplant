@@ -3,6 +3,7 @@ import Login from "routes/Login";
 import PlantList from "routes/PlantList";
 import PlantPlus from "routes/PlantPlus";
 import DiaryList from "routes/DiaryList";
+import DiaryPlus from "routes/DiaryPlus";
 
 const AppRouter = ({ loginIn, useObj }) => {
   return (
@@ -15,8 +16,9 @@ const AppRouter = ({ loginIn, useObj }) => {
             <Route path="/Login" element={<Login />} />
           )}
           <Route path="/PlantList" element={<PlantList />}></Route>
-          <Route path="/DiaryList" element={<DiaryList />}></Route>
           <Route path="/PlantPlus" element={<PlantPlus />}></Route>
+          <Route path="/DiaryList" element={<DiaryList />}></Route>
+          <Route path="/DiaryPlus" element={<DiaryPlus />}></Route>
         </>
       </Routes>
     </Router>
