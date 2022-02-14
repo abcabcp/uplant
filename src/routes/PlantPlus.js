@@ -1,7 +1,7 @@
 import { dbService, storageService } from "fbase";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { v4 as uuidv4 } from "uuid";
 
 const PlantPlus = ({ userObj }) => {
@@ -28,9 +28,12 @@ const PlantPlus = ({ userObj }) => {
       p_kind: kind,
       p_nickname: nickname,
       p_birthDate: birthDate,
-      p_waterday: waterday,
       p_auth: uid,
-      createdAt: Date.now(),
+      //물주는 날짜 카운트
+      p_waterday: waterday,
+      //초기 물준 날짜를 오늘로 등록 -> 물주기 버튼 클릭시 새로 업데이트
+      p_nowwaterday: new Date(),
+      createAt: Date.now(),
       attachmentUrl,
     });
 

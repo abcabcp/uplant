@@ -1,6 +1,6 @@
 import { dbService } from "fbase";
 import { useState, useEffect } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import Diary from "components/Diary";
 
 const DiaryCard = ({ userObj }) => {

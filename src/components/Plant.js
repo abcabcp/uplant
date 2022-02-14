@@ -8,6 +8,8 @@ const Plant = ({ PlantObj }) => {
   const [newWaterday, setNewWaterday] = useState(PlantObj.p_waterday);
   const [newBirthday, setNewBirthday] = useState(PlantObj.p_birthday);
 
+  //console.log(PlantObj.p_nowwaterday.toDate());
+
   const onDeleteClick = async () => {
     const confirm = window.confirm("삭제하실거에요? 😿");
     if (confirm) {
@@ -58,6 +60,16 @@ const Plant = ({ PlantObj }) => {
     });
     setEdit(false);
   };
+
+  const onNewNowWaterClick = async (event) => {
+    const confirm = window.confirm("지금 물을 주셨나요?");
+    if (confirm) {
+      await dbService.doc(`plants/${PlantObj.id}`).update({
+        p_nowwaterday: new Date(),
+      });
+    }
+  };
+
   return (
     <div>
       {edit ? (
@@ -102,7 +114,6 @@ const Plant = ({ PlantObj }) => {
         <>
           <button onClick={onDeleteClick}>🗑</button>
           <button onClick={toggleEdit}>✏</button>
-          <div>이미지</div>
           <div>
             {PlantObj.attachmentUrl && (
               <img
@@ -114,7 +125,8 @@ const Plant = ({ PlantObj }) => {
             )}
             <h2>{PlantObj.p_kind}</h2>
             <div>{PlantObj.p_nickname}</div>
-            <div>{PlantObj.p_waterday}</div>
+            <div>물주는 날이 {PlantObj.p_waterday}일 남았습니다</div>
+            <button onClick={onNewNowWaterClick}>💧</button>
             <div>{PlantObj.p_birthDate}</div>
           </div>
         </>
