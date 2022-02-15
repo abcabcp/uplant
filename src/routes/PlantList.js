@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import LogOut from "components/LogOut";
 import PlantCard from "components/PlantCard";
 
 const PlantList = () => {

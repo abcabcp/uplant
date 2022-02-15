@@ -1,0 +1,31 @@
+@import "css/color.module.scss";
+
+body {
+    background-color: $gray;
+}
+.container {
+  text-align: center;
+}
+
+.logo {
+    width: 280px;
+    margin-left: 15px;
+}
+
+.loginform {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.social {
+    margin-top: 20px;
+    border: none;
+    background-color: $gray;
+    font-size: 20px;
+}
+
+.span {
+    display: block;
+    margin-top: 20px;
+    color: $green-100;
+}
