@@ -40,27 +40,29 @@ const DiaryPlus = () => {
     history("/DiaryList");
   };
   return (
-    <div>
-      <h2>오늘의 하루는 어땠나요? ☘</h2>
-      <form onSubmit={onSubmit}>
-        <input
-          value={diaryTitle}
-          type="text"
-          placeholder="일기 제목을 입력해주세요."
-          onChange={onDiaryTitleChange}
-          maxLength={100}
-          required
-        />
-        <input
-          value={diaryText}
-          type="text"
-          onChange={onDiaryTextChange}
-          placeholder="내일은 더 큰 행복이 올거야"
-          required
-        />
-        <input type="submit" value="등록완료" />
-      </form>
-    </div>
+    <>
+      <div>
+        <h2>오늘의 하루는 어땠나요? ☘</h2>
+        <form onSubmit={onSubmit}>
+          <input
+            value={diaryTitle}
+            type="text"
+            placeholder="일기 제목을 입력해주세요."
+            onChange={onDiaryTitleChange}
+            maxLength={100}
+            required
+          />
+          <input
+            value={diaryText}
+            type="text"
+            onChange={onDiaryTextChange}
+            placeholder="내일은 더 큰 행복이 올거야"
+            required
+          />
+          <input type="submit" value="등록완료" />
+        </form>
+      </div>
+    </>
   );
 };
 

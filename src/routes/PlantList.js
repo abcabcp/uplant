@@ -10,7 +10,6 @@ const PlantList = () => {
         <Link to="/DiaryList">diary</Link>
         <Link to="/PlantPlus">+</Link>
         <PlantCard />
-        <LogOut />
       </div>
     </>
   );

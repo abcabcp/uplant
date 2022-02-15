@@ -4,7 +4,6 @@ import PlantList from "routes/PlantList";
 import PlantPlus from "routes/PlantPlus";
 import DiaryList from "routes/DiaryList";
 import DiaryPlus from "routes/DiaryPlus";
-import WaterdateCounter from "routes/WaterdateCounter";
 
 const AppRouter = ({ loginIn, useObj }) => {
   return (
@@ -20,8 +19,6 @@ const AppRouter = ({ loginIn, useObj }) => {
           <Route path="/PlantPlus" element={<PlantPlus />}></Route>
           <Route path="/DiaryList" element={<DiaryList />}></Route>
           <Route path="/DiaryPlus" element={<DiaryPlus />}></Route>
-
-          <Route path="/waterdate" element={<WaterdateCounter />}></Route>
         </>
       </Routes>
     </Router>

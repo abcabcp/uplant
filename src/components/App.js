@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AppRouter from "components/Router";
 import { authService } from "fbase";
+import Header from "components/Header";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -20,6 +21,7 @@ function App() {
   }, []);
   return (
     <>
+      <Header />
       {init ? <AppRouter loginIn={loginIn} userObj={userObj} /> : "로딩 중..."}
       <footer>&copy; {new Date().getFullYear()}Uplant</footer>
     </>
