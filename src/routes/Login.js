@@ -1,11 +1,13 @@
 import { authService, firebaseInstance } from "fbase";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faGoogle, faGithub, faFacebook} from "@fortawesome/free-brands-svg-icons";
+import Container from "components/Container";
 import MyInput from "components/Input";
 import MyButton from "components/Button";
 import styles from "css/loginform.module.scss";
 import Logo from "img/logo.png";
+import Facebook from "img/facebook.png";
+import Github from "img/github.png";
+import Google from "img/google.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -61,8 +63,10 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.container}> 
-    <h1><img src={Logo} alt="uplant" className={styles.logo}/></h1>
+    <Container>
+      <h1>
+        <img src={Logo} alt="uplant" className={styles.logo} />
+      </h1>
       <div className={styles.loginform}>
         <form onSubmit={onSubmit}>
           <MyInput
@@ -85,24 +89,41 @@ const Login = () => {
             bgcolor={"#ffffff"}
             fontcolor={"#1c1c1c"}
           />
-          <MyInput type="submit" value={newAccount ? "JOIN" : "LOGIN"} hover={true}/>
+          <MyInput
+            type="submit"
+            value={newAccount ? "JOIN" : "LOGIN"}
+            hover={true}
+          />
           {error}
         </form>
-        <span onClick={toggleAccount} className={styles.span}>
+        <span onClick={toggleAccount} className={`${styles.span} ${styles.span.hover}`}>
           {newAccount ? "LOGIN" : "JOIN"}
         </span>
         <div>
-          <button onClick={onSocialClick} name="google" className={styles.social}>
-            <FontAwesomeIcon icon ={faGoogle} color={"#f95959"}/>
+          <button
+            onClick={onSocialClick}
+            name="google"
+            className={styles.social}
+          >
+            Google
           </button>
-          <button onClick={onSocialClick} name="facebook" className={styles.social}><FontAwesomeIcon icon ={faFacebook} color={"#005792"}/>
+          <button
+            onClick={onSocialClick}
+            name="facebook"
+            className={styles.social}
+          >
+          Facebook
           </button>
-          <button onClick={onSocialClick} name="github" className={styles.social}>
-            <FontAwesomeIcon icon ={faGithub} color={"#680747"}/>
+          <button
+            onClick={onSocialClick}
+            name="github"
+            className={styles.social}
+          >
+            Github
           </button>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

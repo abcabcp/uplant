@@ -164,8 +164,7 @@ const Plant = ({ PlantObj }) => {
         </>
       ) : (
         <>
-          <button onClick={onDeleteClick}>🗑</button>
-          <button onClick={toggleEdit}>✏</button>
+        <button onClick={onNewNowWaterClick}>물주기💧</button>
           <div>
             {PlantObj.attachmentUrl && (
               <img
@@ -179,8 +178,9 @@ const Plant = ({ PlantObj }) => {
             <div>종류: {PlantObj.p_kind}</div>
             <div>분양 날짜 : {PlantObj.p_birthDate}</div>
             <div>{dateFormet}에 마지막으로 물을 줬어요~🌱</div>
-            <button onClick={onNewNowWaterClick}>물주기💧</button>
           </div>
+          <button onClick={onDeleteClick}>🗑</button>
+          <button onClick={toggleEdit}>✏</button>
         </>
       )}
     </div>

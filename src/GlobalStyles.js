@@ -15,10 +15,14 @@ const GlobalStyles = createGlobalStyle`
     }
     body {
         font-family: "GangwonEdu_OTFBoldA";
-        font-size: 15px;
+        font-size: 17px;
         color: #1c1c1c;
         padding: 0;
         margin: 0;
+    }
+
+    button:hover {
+        cursor: pointer;
     }
 
 `;

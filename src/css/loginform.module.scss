@@ -3,6 +3,7 @@
 body {
     background-color: $gray;
 }
+
 .container {
   text-align: center;
 }
@@ -18,14 +19,20 @@ body {
 }
 
 .social {
-    margin-top: 20px;
+    margin: 20px 2px 0 2px; 
     border: none;
     background-color: $gray;
-    font-size: 20px;
+    font-size: 11px;
+    color: $green-100;
 }
 
 .span {
     display: block;
     margin-top: 20px;
-    color: $green-100;
+    color: $green-200;
+    cursor: pointer;
+    &:hover {
+     color: $pink;
+    }
 }
+

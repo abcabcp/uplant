@@ -20,7 +20,7 @@ const AppRouter = ({ loginIn }) => {
         <Route path="/DiaryList" element={<DiaryList />}></Route>
         <Route path="/DiaryPlus" element={<DiaryPlus />}></Route>
         <Route path="*" element={<NotFound />}></Route>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login />} exact={false}/>
       </Routes>
     </Router>
   );
