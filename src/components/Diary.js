@@ -9,6 +9,13 @@ const Diary = ({ DiaryObj }) => {
   const [newDiaryTitle, setNewDiaryTitle] = useState(DiaryObj.d_title);
   const [newDiaryText, setNewDiaryText] = useState(DiaryObj.d_text);
 
+  console.log(DiaryObj.createAt);
+  //const dateFormet = date.getMonth() + 1 + "월" + date.getDate() + "일";
+  const writeDate = new Date(DiaryObj.createAt);
+
+  const dateFormat = writeDate.getFullYear() + "년 " + (writeDate.getMonth()+1) + "월 " + writeDate.getDate() + "일";
+
+
   const onDeleteClick = async () => {
     const confirm = window.confirm("삭제하실거에요? 😿");
     if (confirm) {
@@ -68,6 +75,8 @@ const Diary = ({ DiaryObj }) => {
           <button onClick={toggleEdit}>취소</button>
         </>
       ) : (
+        <div>
+        <div className={diary.writedate}>{dateFormat}</div>
         <Card className={diary.contents}>
             <h2 className={diary.title}>{DiaryObj.d_title}</h2>
             <div className={diary.text}>{DiaryObj.d_text}</div>
@@ -76,6 +85,7 @@ const Diary = ({ DiaryObj }) => {
               <MyButton onClick={onDeleteClick} handleBtn={true}>x</MyButton>
             </div>
         </Card>
+        </div>
       )}
     </div>
   );

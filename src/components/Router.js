@@ -11,16 +11,19 @@ const AppRouter = ({ loginIn }) => {
     <Router>
       <Routes>
         {loginIn ? (
-          <Route path="/" element={<PlantList />} exact={true}></Route>
+          <Route path="/" element={<PlantList />} exact={true} />
         ) : (
           <Route path="/Login" element={<Login />} />
         )}
+
         <Route path="/PlantList" element={<PlantList />}></Route>
         <Route path="/PlantPlus" element={<PlantPlus />}></Route>
         <Route path="/DiaryList" element={<DiaryList />}></Route>
         <Route path="/DiaryPlus" element={<DiaryPlus />}></Route>
         <Route path="*" element={<NotFound />}></Route>
-        <Route path="/" element={<Login />} exact={false}/>
+
+        <Route path="/" element={<Login />}></Route>
+
       </Routes>
     </Router>
   );

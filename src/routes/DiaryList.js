@@ -10,7 +10,7 @@ const diaryList = () => {
       <div className="tab_menu">
         <Tab to="/PlantList" boxShadow={true} noActive={true}>plant</Tab>
         <Tab to="/DiaryList" active={true} boxShadow={true}>diary</Tab>
-        <Tab to="/PlantPlus" plus={true} >+</Tab>
+        <Tab to="/DiaryPlus" plus={true} >+</Tab>
       </div>
       <DiaryCard />
       <LogOut />

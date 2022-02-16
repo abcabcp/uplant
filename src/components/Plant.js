@@ -27,7 +27,6 @@ const Plant = ({ PlantObj }) => {
   const user = auth.currentUser;
   const uid = user.uid;
 
-  console.log(dateFormet);
 
   console.log(newNowWaterday);
   const onDeleteClick = async () => {
