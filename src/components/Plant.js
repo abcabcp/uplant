@@ -2,6 +2,11 @@ import { dbService, storageService } from "fbase";
 import { useState } from "react";
 import { getAuth } from "firebase/auth";
 import { v4 as uuidv4 } from "uuid";
+import MyButton from "components/Button";
+import Card from "components/Card";
+import plant from "css/plantcard.module.scss";
+
+
 
 const Plant = ({ PlantObj }) => {
   const [edit, setEdit] = useState(false);
@@ -163,26 +168,28 @@ const Plant = ({ PlantObj }) => {
           <button onClick={toggleEdit}>취소</button>
         </>
       ) : (
-        <>
-        <button onClick={onNewNowWaterClick}>물주기💧</button>
-          <div>
-            {PlantObj.attachmentUrl && (
-              <img
-                src={PlantObj.attachmentUrl}
-                width="50px"
-                height="50px"
-                alt="식물 이미지"
-              />
-            )}
-            <h2>{PlantObj.p_nickname}</h2>
-            <div>종류: {PlantObj.p_kind}</div>
-            <div>분양 날짜 : {PlantObj.p_birthDate}</div>
-            <div>{dateFormet}에 마지막으로 물을 줬어요~🌱</div>
-          </div>
-          <button onClick={onDeleteClick}>🗑</button>
-          <button onClick={toggleEdit}>✏</button>
-        </>
-      )}
+        <Card className={plant.contents}>
+          <MyButton onClick={onNewNowWaterClick} className={plant.water} width={"35px"} height={"35px"}>💧</MyButton>
+            <div>
+              {PlantObj.attachmentUrl && (
+                <img
+                  src={PlantObj.attachmentUrl}
+                  width="100px"
+                  height="100px"
+                  alt="식물 이미지"
+                />
+              )}
+              <h2 className={plant.name}>{PlantObj.p_nickname}</h2>
+              <div className={plant.kind}>종류: {PlantObj.p_kind}</div>
+              <div className={plant.helloday}>분양 날짜 : {PlantObj.p_birthDate}</div>
+              <div className={plant.lastwaterday}><span className={plant.date}>{dateFormet}</span>에 마지막으로 물을 줬어요~🌼</div>
+            </div>
+             <div className={plant.handleBtn}>
+              <MyButton onClick={toggleEdit} handleBtn={true}>△</MyButton>
+              <MyButton onClick={onDeleteClick} handleBtn={true}>x</MyButton>
+            </div>
+          </Card>
+        )}
     </div>
   );
 };

@@ -23,11 +23,11 @@ const PlantCard = ({ userObj }) => {
   console.log(ID_CHECK);
 
   return (
-    <>
+    <div>
       {ID_CHECK.map((plant) => (
         <Plant key={plant.id} PlantObj={plant} />
       ))}
-    </>
+    </div>
   );
 };
 

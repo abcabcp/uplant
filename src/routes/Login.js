@@ -63,7 +63,7 @@ const Login = () => {
   };
 
   return (
-    <Container>
+    <Container textAlign={true}>
       <h1>
         <img src={Logo} alt="uplant" className={styles.logo} />
       </h1>

@@ -1,0 +1,49 @@
+@import "css/color.module.scss";
+
+
+.name {
+    position: absolute;
+    top: 30px;
+    left: 150px;
+    font-size: 25px;
+}
+
+img {
+    border-radius: 15px;
+}
+.contents {
+    position: relative;
+}
+
+.water {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.kind {
+    position: absolute;
+    top: 67px;
+    left: 150px;
+}
+
+.helloday {
+    position: absolute;
+    top: 95px;
+    left: 150px;
+}
+
+.lastwaterday {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.date {
+    color: #8dc6ff;
+}
+
+
+.handleBtn {
+    margin-top: 10px;
+    margin-left: 310px;
+}
