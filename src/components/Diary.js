@@ -2,6 +2,7 @@ import { dbService, storageService } from "fbase";
 import { useState } from "react";
 import Card from "components/Card";
 import MyButton from "components/Button";
+import diary from "css/diarycard.module.scss";
 
 const Diary = ({ DiaryObj }) => {
   const [edit, setEdit] = useState(false);
@@ -67,12 +68,10 @@ const Diary = ({ DiaryObj }) => {
           <button onClick={toggleEdit}>취소</button>
         </>
       ) : (
-        <Card>
-          <div>
-            <h2>{DiaryObj.d_title}</h2>
-            <div>{DiaryObj.d_text}</div>
-          </div>
-             <div>
+        <Card className={diary.contents}>
+            <h2 className={diary.title}>{DiaryObj.d_title}</h2>
+            <div className={diary.text}>{DiaryObj.d_text}</div>
+             <div className={diary.handleBtn}>
               <MyButton onClick={toggleEdit} handleBtn={true}>△</MyButton>
               <MyButton onClick={onDeleteClick} handleBtn={true}>x</MyButton>
             </div>

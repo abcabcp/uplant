@@ -169,7 +169,7 @@ const Plant = ({ PlantObj }) => {
         </>
       ) : (
         <Card className={plant.contents}>
-          <MyButton onClick={onNewNowWaterClick} className={plant.water} width={"35px"} height={"35px"}>💧</MyButton>
+          <MyButton onClick={onNewNowWaterClick} className={plant.water} width={"35px"} height={"35px"} hover={true}>💧</MyButton>
             <div>
               {PlantObj.attachmentUrl && (
                 <img
