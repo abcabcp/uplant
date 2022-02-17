@@ -24,7 +24,7 @@ function App() {
   return (
     <div>
       <GlobalStyles />
-      {loginIn ? <Header/> : null}
+      {loginIn ? <Header /> : null}
       {init ? <AppRouter loginIn={loginIn} userObj={userObj} /> : "로딩 중..."}
     </div>
   );

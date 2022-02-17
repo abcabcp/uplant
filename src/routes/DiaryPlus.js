@@ -1,5 +1,5 @@
 import { dbService } from "fbase";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -39,6 +39,20 @@ const DiaryPlus = () => {
 
     history("/DiaryList");
   };
+
+  const getListDesc = async () => {
+    const listDesc = await dbService
+      .collection("diarys")
+      .orderBy("createAt", "desc")
+      .get();
+
+    console.log(listDesc.docs.map((doc) => doc.data()));
+  };
+
+  useEffect(() => {
+    getListDesc();
+  }, []);
+
   return (
     <>
       <div>

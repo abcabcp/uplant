@@ -49,7 +49,7 @@ const PlantPlus = ({ userObj }) => {
   const getListAsc = async () => {
     const listAsc = await dbService
       .collection("plants")
-      .orderBy("createAt", "asc")
+      .orderBy("createAt", "desc")
       .get();
 
     console.log(listAsc.docs.map((doc) => doc.data()));

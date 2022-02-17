@@ -13,8 +13,13 @@ const Diary = ({ DiaryObj }) => {
   //const dateFormet = date.getMonth() + 1 + "월" + date.getDate() + "일";
   const writeDate = new Date(DiaryObj.createAt);
 
-  const dateFormat = writeDate.getFullYear() + "년 " + (writeDate.getMonth()+1) + "월 " + writeDate.getDate() + "일";
-
+  const dateFormat =
+    writeDate.getFullYear() +
+    "년 " +
+    (writeDate.getMonth() + 1) +
+    "월 " +
+    writeDate.getDate() +
+    "일";
 
   const onDeleteClick = async () => {
     const confirm = window.confirm("삭제하실거에요? 😿");
@@ -76,15 +81,19 @@ const Diary = ({ DiaryObj }) => {
         </>
       ) : (
         <div>
-        <div className={diary.writedate}>{dateFormat}</div>
-        <Card className={diary.contents}>
+          <div className={diary.writedate}>{dateFormat}</div>
+          <Card className={diary.contents}>
             <h2 className={diary.title}>{DiaryObj.d_title}</h2>
             <div className={diary.text}>{DiaryObj.d_text}</div>
-             <div className={diary.handleBtn}>
-              <MyButton onClick={toggleEdit} handleBtn={true}>△</MyButton>
-              <MyButton onClick={onDeleteClick} handleBtn={true}>x</MyButton>
+            <div className={diary.handleBtn}>
+              <MyButton onClick={toggleEdit} handleBtn={true}>
+                △
+              </MyButton>
+              <MyButton onClick={onDeleteClick} handleBtn={true}>
+                x
+              </MyButton>
             </div>
-        </Card>
+          </Card>
         </div>
       )}
     </div>

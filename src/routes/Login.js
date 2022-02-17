@@ -1,13 +1,11 @@
 import { authService, firebaseInstance } from "fbase";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Container from "components/Container";
 import MyInput from "components/Input";
 import MyButton from "components/Button";
 import styles from "css/loginform.module.scss";
 import Logo from "img/logo.png";
-import Facebook from "img/facebook.png";
-import Github from "img/github.png";
-import Google from "img/google.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,6 +13,8 @@ const Login = () => {
   const [newAccount, setNewAccount] = useState(false);
   const [error, setError] = useState("");
   const toggleAccount = () => setNewAccount((prev) => !prev);
+
+  const history = useNavigate();
 
   const onChange = (event) => {
     const {
@@ -40,6 +40,7 @@ const Login = () => {
         data = await authService.signInWithEmailAndPassword(email, password);
       }
       console.log(data);
+      history("/PlantList");
     } catch (error) {
       setError(error.message);
     }
@@ -60,6 +61,7 @@ const Login = () => {
 
     const data = await authService.signInWithPopup(provider);
     console.log(data);
+    history("/PlantList");
   };
 
   return (
@@ -96,7 +98,10 @@ const Login = () => {
           />
           {error}
         </form>
-        <span onClick={toggleAccount} className={`${styles.span} ${styles.span.hover}`}>
+        <span
+          onClick={toggleAccount}
+          className={`${styles.span} ${styles.span.hover}`}
+        >
           {newAccount ? "LOGIN" : "JOIN"}
         </span>
         <div>
@@ -112,7 +117,7 @@ const Login = () => {
             name="facebook"
             className={styles.social}
           >
-          Facebook
+            Facebook
           </button>
           <button
             onClick={onSocialClick}
