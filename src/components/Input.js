@@ -5,6 +5,9 @@ const MyInput = styled.input`
   width: ${(props) => props.width || "300px"};
   background-color: ${(props) => props.bgcolor || "#EFEFEF"};
   color: ${(props) => props.fontcolor || "#C4C4C4"};
+  margin: 0 auto;
+
+  padding: 10px;
   height: 40px;
   border: none;
   text-align: center;
@@ -15,9 +18,18 @@ const MyInput = styled.input`
   &::placeholder {
     color: #b5b5b5;
     font-size: 12px;
+    font-family: "GangwonEdu_OTFBoldA";
   }
 
+  &[type=submit] {
+    font-size: 14px; 
+    font-family: "GangwonEdu_OTFBoldA";
+  }
+  &[type=date] {
+    font-family: "GangwonEdu_OTFBoldA";
 
+        font-size: 12px;
+  }
  ${(props) =>
     props.hover &&
     css`
@@ -29,6 +41,7 @@ const MyInput = styled.input`
         transition: all 0.5s;
       }
     `}
+
 `;
 
 export default MyInput;

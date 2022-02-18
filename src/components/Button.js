@@ -8,6 +8,7 @@ const MyButton = styled.button`
   border: none;
   text-align: center;
   border-radius: 20px;
+font-family: "GangwonEdu_OTFBoldA";
 
   ${(props) =>
     props.hover &&
