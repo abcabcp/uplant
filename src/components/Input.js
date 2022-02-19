@@ -4,11 +4,11 @@ import styled, { css } from "styled-components";
 const MyInput = styled.input`
   width: ${(props) => props.width || "300px"};
   background-color: ${(props) => props.bgcolor || "#EFEFEF"};
-  color: ${(props) => props.fontcolor || "#C4C4C4"};
+  color: ${(props) => props.fontcolor || "#1c1c1c"};
   margin: 0 auto;
 
   padding: 10px;
-  height: 40px;
+  height: ${(props) => props.height || "40px"};
   border: none;
   text-align: center;
   border-radius: 20px;
@@ -24,6 +24,7 @@ const MyInput = styled.input`
   &[type=submit] {
     font-size: 14px; 
     font-family: "GangwonEdu_OTFBoldA";
+    cursor : pointer;
   }
   &[type=date] {
     font-family: "GangwonEdu_OTFBoldA";

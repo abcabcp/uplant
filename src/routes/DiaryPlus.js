@@ -2,6 +2,9 @@ import { dbService } from "fbase";
 import { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import Container from "components/Container";
+import MyInput from "components/Input";
+import styles from "css/diaryplus.module.scss";
 
 const DiaryPlus = () => {
   const [diaryTitle, setDiaryTitle] = useState("");
@@ -54,29 +57,34 @@ const DiaryPlus = () => {
   }, []);
 
   return (
-    <>
+    <Container textAlign={true}>
       <div>
-        <h2>오늘의 하루는 어땠나요? ☘</h2>
+        <h2 className={styles.diarytitle}>오늘의 하루는 어땠나요? ☘</h2>
         <form onSubmit={onSubmit}>
-          <input
+          <MyInput
             value={diaryTitle}
             type="text"
             placeholder="일기 제목을 입력해주세요."
             onChange={onDiaryTitleChange}
             maxLength={100}
+            bgcolor={"#ffffff"}
+            width={"400px"}
             required
           />
-          <input
+          <MyInput
             value={diaryText}
             type="text"
             onChange={onDiaryTextChange}
-            placeholder="내일은 더 큰 행복이 올거야"
+            placeholder="내용을 입력해주세요 :)"
+            height={"200px"}
+            bgcolor={"#ffffff"}
+            width={"400px"}
             required
           />
-          <input type="submit" value="등록완료" />
+          <MyInput type="submit" value="등록완료" bgcolor={"#b9e3c6"} width={"400px"} fontcolor={"#1c1c1c"}/>
         </form>
       </div>
-    </>
+    </Container>
   );
 };
 
