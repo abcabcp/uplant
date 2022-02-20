@@ -50,19 +50,6 @@ const PlantPlus = ({ userObj }) => {
     history("/PlantList");
   };
 
-  const getListAsc = async () => {
-    const listAsc = await dbService
-      .collection("plants")
-      .orderBy("createAt", "desc")
-      .get();
-
-    console.log(listAsc.docs.map((doc) => doc.data()));
-  };
-
-  useEffect(() => {
-    getListAsc();
-  }, []);
-
   const onClearAttachment = () => setAttachment("");
 
   const onFileChange = (event) => {

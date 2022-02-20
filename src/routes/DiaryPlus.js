@@ -43,19 +43,6 @@ const DiaryPlus = () => {
     history("/DiaryList");
   };
 
-  const getListDesc = async () => {
-    const listDesc = await dbService
-      .collection("diarys")
-      .orderBy("createAt", "desc")
-      .get();
-
-    console.log(listDesc.docs.map((doc) => doc.data()));
-  };
-
-  useEffect(() => {
-    getListDesc();
-  }, []);
-
   return (
     <Container textAlign={true}>
       <div>

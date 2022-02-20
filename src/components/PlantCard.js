@@ -20,6 +20,12 @@ const PlantCard = ({ userObj }) => {
   }, []);
 
   const ID_CHECK = plants.filter((plant) => plant.p_auth === uid);
+  const sortingField = "createAt";
+
+  ID_CHECK.sort((a,b) => {
+    return a[sortingField] -b[sortingField];
+  });
+
   console.log(ID_CHECK);
 
   return (
