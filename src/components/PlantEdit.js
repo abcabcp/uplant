@@ -3,8 +3,10 @@ import { useState } from "react";
 import { getAuth } from "firebase/auth";
 import { v4 as uuidv4 } from "uuid";
 import MyButton from "components/Button";
+import MyInput from "components/Input";
 import Card from "components/Card";
 import plant from "css/plantcard.module.scss";
+import styles from "css/edit.module.scss";
 
 
 
@@ -13,8 +15,7 @@ const Plant = ({ PlantObj }) => {
   const [attachment, setAttachment] = useState(PlantObj.attachmentUrl);
   const [newKind, setNewKind] = useState(PlantObj.p_kind);
   const [newNickname, setNewNickname] = useState(PlantObj.p_nickname);
-  const [newWaterday, setNewWaterday] = useState(PlantObj.p_waterday);
-  const [newBirthday, setNewBirthday] = useState(PlantObj.p_birthday);
+  const [newBirthdate, setNewBirthdate] = useState(PlantObj.p_birthDate);
 
   const [newNowWaterday, setNewNowWaterday] = useState(
     PlantObj.p_nowwaterday.toDate()
@@ -27,8 +28,6 @@ const Plant = ({ PlantObj }) => {
   const user = auth.currentUser;
   const uid = user.uid;
 
-
-  console.log(newNowWaterday);
   const onDeleteClick = async () => {
     const confirm = window.confirm("삭제하실거에요? 😿");
     if (confirm) {
@@ -70,18 +69,11 @@ const Plant = ({ PlantObj }) => {
     setNewNickname(value);
   };
 
-  const onNewWaterdayChange = (event) => {
+  const onNewBirthdateChange = (event) => {
     const {
       target: { value },
     } = event;
-    setNewWaterday(value);
-  };
-
-  const onNewBirthdayChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setNewBirthday(value);
+    setNewBirthdate(value);
   };
 
   const onSubmit = async (event) => {
@@ -97,8 +89,7 @@ const Plant = ({ PlantObj }) => {
     await dbService.doc(`plants/${PlantObj.id}`).update({
       p_kind: newKind,
       p_nickname: newNickname,
-      p_waterday: newWaterday,
-      p_birthday: newBirthday,
+      p_birthDate: newBirthdate,
       attachmentUrl,
     });
     setEdit(false);
@@ -116,11 +107,13 @@ const Plant = ({ PlantObj }) => {
   return (
     <div>
       {edit ? (
-        <>
+        <Card bgColor="#F6F6F6">
           <form onSubmit={onSubmit}>
+          <label for="img-input" >업로드</label>
             <input
               type="file"
               accept="image/*"
+              id="img-input"
               onChange={newAttachmentChange}
             />
             {attachment && (
@@ -131,41 +124,39 @@ const Plant = ({ PlantObj }) => {
                 alt="나의 식물"
               />
             )}
-            <input
+
+            <MyInput
               value={newKind}
               type="text"
               placeholder="식물의 종류를 입력해주세요"
               maxLength={30}
               onChange={onNewKindChange}
+              bgcolor={"#ffffff"}
               required
             />
-            <input
+            <MyInput
               value={newNickname}
               type="text"
               placeholder="식물의 애칭을 입력해주세요"
               onChange={onNewNicknameChange}
               maxLength={30}
+              bgcolor={"#ffffff"}
               required
             />
-            <input
-              value={newBirthday}
+            <MyInput
+              value={newBirthdate}
               type="date"
               placeholder="식물의 생일을 입력해주세요"
-              onChange={onNewBirthdayChange}
+              onChange={onNewBirthdateChange}
+              bgcolor={"#ffffff"}
               required
             />
-
-            <input
-              value={newWaterday}
-              required
-              type="number"
-              placeholder="며칠마다 물을 마시나요? (숫자만 입력)"
-              onChange={onNewWaterdayChange}
-            />
-            <input type="submit" value="수정 완료" />
+            <div className={styles.editBtns}>
+              <MyButton onClick={toggleEdit} width={"145px"} backgroundColor={"#e5e5e5"}>취소</MyButton>
+              <MyInput type="submit" value="수정 완료" bgcolor={"#b9e3c6"} width={"145px"}/>
+            </div>
           </form>
-          <button onClick={toggleEdit}>취소</button>
-        </>
+        </Card>
       ) : (
         <Card className={plant.contents}>
           <MyButton onClick={onNewNowWaterClick} className={plant.water} width={"35px"} height={"35px"} hover={true}>💧</MyButton>

@@ -1,7 +1,7 @@
 import { dbService } from "fbase";
 import { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
-import Plant from "components/Plant";
+import Plant from "components/PlantEdit";
 
 const PlantCard = ({ userObj }) => {
   const [plants, setPlants] = useState([]);
@@ -25,8 +25,6 @@ const PlantCard = ({ userObj }) => {
   ID_CHECK.sort((a,b) => {
     return a[sortingField] -b[sortingField];
   });
-
-  console.log(ID_CHECK);
 
   return (
     <div>

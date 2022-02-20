@@ -33,8 +33,6 @@ const PlantPlus = ({ userObj }) => {
       p_nickname: nickname,
       p_birthDate: birthDate,
       p_auth: uid,
-      //물주는 날짜 카운트
-      p_waterday: waterday,
       //초기 물준 날짜를 오늘로 등록 -> 물주기 버튼 클릭시 새로 업데이트
       p_nowwaterday: new Date(),
       createAt: Date.now(),
@@ -91,14 +89,6 @@ const PlantPlus = ({ userObj }) => {
     setBirthDate(value);
   };
 
-  const onWaterdayChange = (event) => {
-    event.preventDefault();
-    const {
-      target: { value },
-    } = event;
-    setWaterday(value);
-  };
-
   return (
     <Container textAlign={true}>
       <h1>새 식물을 등록해주세요!🌹</h1>
@@ -111,7 +101,7 @@ const PlantPlus = ({ userObj }) => {
         </div>
         </div>
           <label className={styles.filebtn} for="img-input" >업로드</label>
-          <input type="file" id="img-input" accept="image/*" onChange={onFileChange} style={{display:"none"}}/>
+          <input type="file" id="img-input" accept="image/*" onChange={onFileChange} style={{display:"none"}} required/>
           <MyButton onClick={onClearAttachment} width={"145px"} color={"#1c1c1c"} className={styles.rebtn} backgroundColor={"#e5e5e5"}>다시 올리기</ MyButton>
         <MyInput
           value={kind}
@@ -137,15 +127,6 @@ const PlantPlus = ({ userObj }) => {
           type="date"
           placeholder="식물의 생일을 입력해주세요"
           maxLength={30}
-          bgcolor={"#ffffff"}
-          required
-        />
-        <MyInput
-          value={waterday}
-          onChange={onWaterdayChange}
-          type="number"
-          placeholder="며칠마다 물을 마시나요? (숫자만 입력)"
-          maxLength={500}
           bgcolor={"#ffffff"}
           required
         />

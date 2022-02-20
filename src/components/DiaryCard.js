@@ -1,7 +1,7 @@
 import { dbService } from "fbase";
 import { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
-import Diary from "components/Diary";
+import Diary from "components/DiaryEdit";
 
 const DiaryCard = ({ userObj }) => {
   const [diarys, setDiarys] = useState([]);
@@ -20,13 +20,13 @@ const DiaryCard = ({ userObj }) => {
   }, []);
 
   const ID_CHECK = diarys.filter((diary) => diary.d_auth === uid);
+
   const sortingField = "createAt";
 
   ID_CHECK.sort((a,b) => {
     return b[sortingField] -a[sortingField];
   });
 
-  console.log(ID_CHECK);
 
   return (
     <>
