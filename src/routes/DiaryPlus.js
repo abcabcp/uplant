@@ -4,6 +4,7 @@ import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Container from "components/Container";
 import MyInput from "components/Input";
+import TextArea from 'components/TextArea';
 import styles from "css/diaryplus.module.scss";
 
 const DiaryPlus = () => {
@@ -58,16 +59,10 @@ const DiaryPlus = () => {
             width={"400px"}
             required
           />
-          <MyInput
-            value={diaryText}
-            type="text"
-            onChange={onDiaryTextChange}
-            placeholder="내용을 입력해주세요 :)"
-            height={"200px"}
-            bgcolor={"#ffffff"}
-            width={"400px"}
-            required
-          />
+          <label for="diarytext"></label>
+          <TextArea id="diarytext" onChange={onDiaryTextChange} width={"400px"} placeholder="내용을 입력해주세요.">
+            {diaryText}
+          </TextArea>
           <MyInput type="submit" value="등록완료" bgcolor={"#b9e3c6"} width={"400px"} fontcolor={"#1c1c1c"}/>
         </form>
       </div>

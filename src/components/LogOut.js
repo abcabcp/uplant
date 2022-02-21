@@ -8,7 +8,6 @@ const MyLogOut = styled.button`
   display: block;
   margin: 0 auto;
   font-family: "GangwonEdu_OTFBoldA";
-  font-size: 15px;
   color: #4e6b57;
 `;
 

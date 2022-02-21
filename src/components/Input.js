@@ -6,8 +6,9 @@ const MyInput = styled.input`
   background-color: ${(props) => props.bgcolor || "#EFEFEF"};
   color: ${(props) => props.fontcolor || "#1c1c1c"};
   margin: 0 auto;
-
+  font-family: "GangwonEdu_OTFBoldA";
   padding: 10px;
+  font-size: 14px;
   height: ${(props) => props.height || "40px"};
   border: none;
   text-align: center;
@@ -17,21 +18,17 @@ const MyInput = styled.input`
 
   &::placeholder {
     color: #b5b5b5;
-    font-size: 12px;
-    font-family: "GangwonEdu_OTFBoldA";
   }
 
   &[type=submit] {
-    font-size: 14px; 
-    font-family: "GangwonEdu_OTFBoldA";
     cursor : pointer;
   }
   &[type=date] {
-    font-family: "GangwonEdu_OTFBoldA";
-
-        font-size: 12px;
+    color: #b5b5b5;
+    text-indent: 20px;
   }
- ${(props) =>
+
+  ${(props) =>
     props.hover &&
     css`
       background-color: #efefef;

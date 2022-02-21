@@ -3,6 +3,7 @@ import { useState } from "react";
 import Card from "components/Card";
 import MyButton from "components/Button";
 import MyInput from "components/Input";
+import TextArea from "components/TextArea";
 import diary from "css/diarycard.module.scss";
 import styles from "css/edit.module.scss";
 
@@ -13,6 +14,7 @@ const Diary = ({ DiaryObj }) => {
 
   //const dateFormet = date.getMonth() + 1 + "월" + date.getDate() + "일";
   const writeDate = new Date(DiaryObj.createAt);
+
 
   const dateFormat =
     writeDate.getFullYear() +
@@ -70,15 +72,10 @@ const Diary = ({ DiaryObj }) => {
               bgcolor={"#ffffff"}
               required
             />
-            <MyInput
-              value={newDiaryText}
-              type="text"
-              onChange={onNewDiaryTextChange}
-              placeholder="내일은 더 큰 행복이 올거야"
-              bgcolor={"#ffffff"}
-              height={"200px"}
-              required
-            />
+             <label for="diarytext"></label>
+            <TextArea id="diarytext" onChange={onNewDiaryTextChange} placeholder="내용을 입력해주세요." height={"auto"}>
+            {newDiaryText}
+            </TextArea>
             <div className={styles.editBtns}>
             <MyButton onClick={toggleEdit}  width={"145px"} backgroundColor={"#e5e5e5"}>취소</MyButton>
             <MyInput type="submit" value="수정 완료" bgcolor={"#b9e3c6"} width={"145px"}/>
