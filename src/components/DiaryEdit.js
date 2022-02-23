@@ -73,7 +73,7 @@ const Diary = ({ DiaryObj }) => {
               required
             />
              <label for="diarytext"></label>
-            <TextArea id="diarytext" onChange={onNewDiaryTextChange} placeholder="내용을 입력해주세요." height={"auto"}>
+            <TextArea id="diarytext" onChange={onNewDiaryTextChange} placeholder="내용을 입력해주세요.">
             {newDiaryText}
             </TextArea>
             <div className={styles.editBtns}>
