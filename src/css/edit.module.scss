@@ -7,3 +7,28 @@
 .filebtn {
     text-indent: -9999px;
 }
+
+.img {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+.imgPlus {
+    text-indent: -9999px;
+}
+
+.uploadBtn {
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+    height: 40px;
+    background-color: var(--green);
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 40px;
+}

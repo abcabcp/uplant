@@ -12,14 +12,13 @@ import styles from "css/edit.module.scss";
 
 const Plant = ({ PlantObj }) => {
   const [edit, setEdit] = useState(false);
+  const [change, setChange] = useState(false);
+  //처음 기본값 = attachment
   const [attachment, setAttachment] = useState(PlantObj.attachmentUrl);
+  const [newAttachment, setNewAttachment] = useState(PlantObj.attachmentUrl);
   const [newKind, setNewKind] = useState(PlantObj.p_kind);
   const [newNickname, setNewNickname] = useState(PlantObj.p_nickname);
   const [newBirthdate, setNewBirthdate] = useState(PlantObj.p_birthDate);
-
-  const [newNowWaterday, setNewNowWaterday] = useState(
-    PlantObj.p_nowwaterday.toDate()
-  );
 
   const date = PlantObj.p_nowwaterday.toDate();
   const dateFormet = date.getMonth() + 1 + "월" + date.getDate() + "일";
@@ -38,6 +37,7 @@ const Plant = ({ PlantObj }) => {
     }
   };
 
+  const toggleChange = () => setChange((prev) => !prev);
   const toggleEdit = () => setEdit((prev) => !prev);
 
   const newAttachmentChange = (event) => {
@@ -50,7 +50,7 @@ const Plant = ({ PlantObj }) => {
       const {
         currentTarget: { result },
       } = finishedEvent;
-      setAttachment(result);
+      setNewAttachment(result);
     };
     imgReader.readAsDataURL(theFile);
   };
@@ -80,18 +80,24 @@ const Plant = ({ PlantObj }) => {
     event.preventDefault();
 
     let attachmentUrl = "";
-    if (attachment !== "") {
+    if (attachment !== newAttachment) {
       const attachmentRef = storageService.ref().child(`${uid}/${uuidv4()}`);
-      const response = await attachmentRef.putString(attachment, "data_url");
+      const response = await attachmentRef.putString(newAttachment, "data_url");
       attachmentUrl = await response.ref.getDownloadURL();
-    }
 
-    await dbService.doc(`plants/${PlantObj.id}`).update({
-      p_kind: newKind,
-      p_nickname: newNickname,
-      p_birthDate: newBirthdate,
-      attachmentUrl,
-    });
+      await dbService.doc(`plants/${PlantObj.id}`).update({
+        p_kind: newKind,
+        p_nickname: newNickname,
+        p_birthDate: newBirthdate,
+        attachmentUrl
+      });
+  } else {
+      await dbService.doc(`plants/${PlantObj.id}`).update({
+        p_kind: newKind,
+        p_nickname: newNickname,
+        p_birthDate: newBirthdate,
+      });
+  }
     setEdit(false);
   };
 
@@ -109,22 +115,22 @@ const Plant = ({ PlantObj }) => {
       {edit ? (
         <Card backgroundColor="#F6F6F6">
           <form onSubmit={onSubmit}>
-          <label for="img-input" >업로드</label>
-            <input
-              type="file"
-              accept="image/*"
-              id="img-input"
-              onChange={newAttachmentChange}
-            />
-            {attachment && (
+          <div>
+            </div>
               <img
-                src={attachment}
-                width="60px"
-                height="60px"
+                className={styles.img}
+                src={newAttachment}
                 alt="나의 식물"
               />
-            )}
-
+              <input
+                type="file"
+                accept="image/*"
+                id="img-input"
+                className={styles.imgPlus}
+                onChange={newAttachmentChange}
+                onClick={toggleChange}
+              />
+              <label for="img-input" className={styles.uploadBtn}>혹시 더 예쁜사진을 찍으셨나요~?</label>
             <MyInput
               value={newKind}
               type="text"
