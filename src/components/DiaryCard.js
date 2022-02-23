@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import Diary from "components/DiaryEdit";
 
-const DiaryCard = ({ userObj }) => {
+const DiaryCard = () => {
   const [diarys, setDiarys] = useState([]);
   const auth = getAuth();
   const user = auth.currentUser;

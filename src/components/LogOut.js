@@ -1,6 +1,6 @@
 import { authService } from "fbase";
 import { useNavigate } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const MyLogOut = styled.button`
   border: none;

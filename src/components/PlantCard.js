@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import Plant from "components/PlantEdit";
 
-const PlantCard = ({ userObj }) => {
+const PlantCard = () => {
   const [plants, setPlants] = useState([]);
   const auth = getAuth();
   const user = auth.currentUser;
@@ -20,7 +20,6 @@ const PlantCard = ({ userObj }) => {
   }, []);
 
   const ID_CHECK = plants.filter((plant) => plant.p_auth === uid);
-  console.log(ID_CHECK);
   const sortingField = "p_nowwaterday";
 
   ID_CHECK.sort((a,b) => {

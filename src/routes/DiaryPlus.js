@@ -1,5 +1,5 @@
 import { dbService } from "fbase";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Container from "components/Container";
@@ -8,24 +8,21 @@ import TextArea from 'components/TextArea';
 import styles from "css/diaryplus.module.scss";
 
 const DiaryPlus = () => {
-  const [diaryTitle, setDiaryTitle] = useState("");
-  const [diaryText, setDiaryText] = useState("");
-  const uid = getAuth().currentUser.uid;
+  const [inputs, setInputs] = useState({
+    diaryTitle: "",
+    diaryText: ""
+  });
+  const { diaryTitle, diaryText } = inputs;
 
+  const uid = getAuth().currentUser.uid;
   const history = useNavigate();
 
-  const onDiaryTitleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setDiaryTitle(value);
-  };
-
-  const onDiaryTextChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setDiaryText(value);
+  const onChange = (event) => {
+    const {name, value} = event.target;
+    setInputs({
+      ...inputs,
+      [name]: value
+    });
   };
 
   const onSubmit = async (event) => {
@@ -38,8 +35,10 @@ const DiaryPlus = () => {
       createAt: Date.now(),
     });
 
-    setDiaryTitle("");
-    setDiaryTitle("");
+    setInputs({
+      diaryTitle: "",
+      diaryText: ""
+    });
 
     history("/DiaryList");
   };
@@ -51,16 +50,17 @@ const DiaryPlus = () => {
         <form onSubmit={onSubmit}>
           <MyInput
             value={diaryTitle}
+            name="diaryTitle"
             type="text"
             placeholder="일기 제목을 입력해주세요."
-            onChange={onDiaryTitleChange}
+            onChange={onChange}
             maxLength={100}
             backgroundColor={"var(--white)"}
             width={"400px"}
             required
           />
           <label for="diarytext"></label>
-          <TextArea id="diarytext" onChange={onDiaryTextChange} width={"400px"} placeholder="내용을 입력해주세요.">
+          <TextArea id="diarytext" name="diaryText" onChange={onChange} width={"400px"} placeholder="내용을 입력해주세요.">
             {diaryText}
           </TextArea>
           <MyInput type="submit" value="등록완료" backgroundColor={"var(--green)"} width={"400px"} fontcolor={"var(--black)"}/>

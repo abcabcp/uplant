@@ -9,12 +9,15 @@ import styles from "css/edit.module.scss";
 
 const Diary = ({ DiaryObj }) => {
   const [edit, setEdit] = useState(false);
-  const [newDiaryTitle, setNewDiaryTitle] = useState(DiaryObj.d_title);
-  const [newDiaryText, setNewDiaryText] = useState(DiaryObj.d_text);
+  const [inputs, setInputs] = useState({
+    newDiaryTitle: DiaryObj.d_title,
+    newDiaryText: DiaryObj.d_text
+  });
+
+  const { newDiaryTitle, newDiaryText} = inputs;
 
   //const dateFormet = date.getMonth() + 1 + "월" + date.getDate() + "일";
   const writeDate = new Date(DiaryObj.createAt);
-
 
   const dateFormat =
     writeDate.getFullYear() +
@@ -23,6 +26,14 @@ const Diary = ({ DiaryObj }) => {
     "월 " +
     writeDate.getDate() +
     "일";
+
+  const onChange = (event) => {
+    const { name, value} = event.target;
+    setInputs({
+      ...inputs,
+      [name] : value
+    });
+  };
 
   const onDeleteClick = async () => {
     const confirm = window.confirm("삭제하실거에요? 😿");
@@ -35,20 +46,6 @@ const Diary = ({ DiaryObj }) => {
   };
 
   const toggleEdit = () => setEdit((prev) => !prev);
-
-  const onNewDiaryTitleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setNewDiaryTitle(value);
-  };
-
-  const onNewDiaryTextChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setNewDiaryText(value);
-  };
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -66,14 +63,15 @@ const Diary = ({ DiaryObj }) => {
           <form onSubmit={onSubmit}>
             <MyInput
               value={newDiaryTitle}
+              name="newDiaryTitle"
               type="text"
               placeholder="일기 제목을 입력해주세요."
-              onChange={onNewDiaryTitleChange}
+              onChange={onChange}
               backgroundColor={"var(--white)"}
               required
             />
              <label for="diarytext"></label>
-            <TextArea id="diarytext" onChange={onNewDiaryTextChange} placeholder="내용을 입력해주세요.">
+            <TextArea id="diarytext" onChange={onChange} placeholder="내용을 입력해주세요." name="newDiaryText">
             {newDiaryText}
             </TextArea>
             <div className={styles.editBtns}>

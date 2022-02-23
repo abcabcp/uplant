@@ -13,12 +13,24 @@ import styles from "css/edit.module.scss";
 const Plant = ({ PlantObj }) => {
   const [edit, setEdit] = useState(false);
   const [change, setChange] = useState(false);
-  //처음 기본값 = attachment
   const [attachment, setAttachment] = useState(PlantObj.attachmentUrl);
   const [newAttachment, setNewAttachment] = useState(PlantObj.attachmentUrl);
-  const [newKind, setNewKind] = useState(PlantObj.p_kind);
-  const [newNickname, setNewNickname] = useState(PlantObj.p_nickname);
-  const [newBirthdate, setNewBirthdate] = useState(PlantObj.p_birthDate);
+  
+  const [inputs, setInputs] = useState({
+    newKind: PlantObj.p_kind,
+    newNickname: PlantObj.p_nickname,
+    newBirthdate: PlantObj.p_birthDate
+  });
+
+  const {newKind, newNickname, newBirthdate} = inputs;
+
+  const onChange = (event) => {
+    const { name, value} = event.target;
+    setInputs({
+      ...inputs,
+      [name] : value
+    });
+  };
 
   const date = PlantObj.p_nowwaterday.toDate();
   const dateFormet = date.getMonth() + 1 + "월" + date.getDate() + "일";
@@ -55,27 +67,6 @@ const Plant = ({ PlantObj }) => {
     imgReader.readAsDataURL(theFile);
   };
 
-  const onNewKindChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setNewKind(value);
-  };
-
-  const onNewNicknameChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setNewNickname(value);
-  };
-
-  const onNewBirthdateChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setNewBirthdate(value);
-  };
-
   const onSubmit = async (event) => {
     event.preventDefault();
 
@@ -84,7 +75,6 @@ const Plant = ({ PlantObj }) => {
       const attachmentRef = storageService.ref().child(`${uid}/${uuidv4()}`);
       const response = await attachmentRef.putString(newAttachment, "data_url");
       attachmentUrl = await response.ref.getDownloadURL();
-
       await dbService.doc(`plants/${PlantObj.id}`).update({
         p_kind: newKind,
         p_nickname: newNickname,
@@ -133,27 +123,30 @@ const Plant = ({ PlantObj }) => {
               <label for="img-input" className={styles.uploadBtn}>혹시 더 예쁜사진을 찍으셨나요~?</label>
             <MyInput
               value={newKind}
+              name="newKind"
               type="text"
               placeholder="식물의 종류를 입력해주세요"
               maxLength={30}
-              onChange={onNewKindChange}
+              onChange={onChange}
               backgroundColor={"var(--white)"}
               required
             />
             <MyInput
               value={newNickname}
+              name="newNickname"
               type="text"
               placeholder="식물의 애칭을 입력해주세요"
-              onChange={onNewNicknameChange}
+              onChange={onChange}
               maxLength={30}
               backgroundColor={"var(--white)"}
               required
             />
             <MyInput
               value={newBirthdate}
+              name="newBirthdate"
               type="date"
               placeholder="식물의 생일을 입력해주세요"
-              onChange={onNewBirthdateChange}
+              onChange={onChange}
               backgroundColor={"var(--white)"}
               required
             />

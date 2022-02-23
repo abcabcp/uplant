@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
 import Logo from "img/logo.png";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const MyHeader = styled.div`
   width: 100%;

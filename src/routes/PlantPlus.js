@@ -1,5 +1,5 @@
 import { dbService, storageService } from "fbase";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { v4 as uuidv4 } from "uuid";
@@ -8,17 +8,29 @@ import MyButton from "components/Button";
 import MyInput from "components/Input";
 import styles from "css/plantplus.module.scss";
 
-const PlantPlus = ({ userObj }) => {
+const PlantPlus = () => {
   const [attachment, setAttachment] = useState("");
-  const [kind, setKind] = useState("");
-  const [nickname, setNickname] = useState("");
-  const [birthDate, setBirthDate] = useState("");
-  const [waterday, setWaterday] = useState("");
+  const [inputs, setInputs] = useState({
+    kind: "",
+    nickname: "",
+    birthDate: "",
+  });
+
+  const { kind, nickname, birthDate } = inputs;
+
+  const onChange = (event) => {
+    const { name, value} = event.target;
+    setInputs({
+      ...inputs,
+      [name] : value
+    });
+  };
+
   const auth = getAuth();
   const user = auth.currentUser;
   const uid = user.uid;
-
   const history = useNavigate();
+
   const onSubmit = async (event) => {
     event.preventDefault();
     let attachmentUrl = "";
@@ -39,10 +51,12 @@ const PlantPlus = ({ userObj }) => {
       attachmentUrl,
     });
 
-    setKind("");
-    setNickname("");
-    setBirthDate("");
-    setWaterday("");
+    setInputs({
+      kind: "",
+      nickname: "",
+      birthDate: ""
+    });
+
     setAttachment("");
 
     history("/PlantList");
@@ -65,30 +79,6 @@ const PlantPlus = ({ userObj }) => {
     imgReader.readAsDataURL(theFile);
   };
 
-  const onKindChange = (event) => {
-    event.preventDefault();
-    const {
-      target: { value },
-    } = event;
-    setKind(value);
-  };
-
-  const onNicknameChange = (event) => {
-    event.preventDefault();
-    const {
-      target: { value },
-    } = event;
-    setNickname(value);
-  };
-
-  const onBirthDateChange = (event) => {
-    event.preventDefault();
-    const {
-      target: { value },
-    } = event;
-    setBirthDate(value);
-  };
-
   return (
     <Container textAlign={true}>
       <h1>새 식물을 등록해주세요!🌹</h1>
@@ -102,19 +92,21 @@ const PlantPlus = ({ userObj }) => {
         </div>
           <label className={styles.filebtn} for="img-input" >업로드</label>
           <input type="file" id="img-input" accept="image/*" onChange={onFileChange} style={{display:"none"}} required/>
-          <MyButton onClick={onClearAttachment} width={"145px"} color={"var(--black)"} className={styles.rebtn} backgroundColor={"var(--gray400)"}>다시 올리기</ MyButton>
+          <MyButton onClick={onClearAttachment} width={"145px"} color={"var(--black)"} className={styles.rebtn} backgroundColor={"var(--gray400)"}>다시 올리기</MyButton>
         <MyInput
           value={kind}
-          onChange={onKindChange}
+          name="kind"
           type="text"
           placeholder="식물의 종류를 입력해주세요"
+          onChange={onChange}
           maxLength={30}
           backgroundColor={"var(--white)"}
           required
         />
         <MyInput
           value={nickname}
-          onChange={onNicknameChange}
+          name="nickname"
+          onChange={onChange}
           type="text"
           placeholder="식물의 애칭을 입력해주세요"
           maxLength={30}
@@ -123,7 +115,8 @@ const PlantPlus = ({ userObj }) => {
         />
         <MyInput
           value={birthDate}
-          onChange={onBirthDateChange}
+          name="birthDate"
+          onChange={onChange}
           type="date"
           placeholder="식물의 생일을 입력해주세요"
           maxLength={30}
