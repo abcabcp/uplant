@@ -19,18 +19,18 @@ const Tab = styled(Link)`
         width: 25px;
         line-height: 30px;
         &:hover {
-        background-color: #4e6b57;
+        background-color: var(--green200);
         transition: all 0.5s;
         color: #ffffff;
       };
     `}
 
     ${(props) => props.active && css`
-        background-color: #b9e3c6;
+        background-color: var(--green);
     `};
 
     ${(props) => props.noActive && css`
-        background-color: #ffffff;
+        background-color: var(--gray);
         &:hover {
             background-color: #D3D3D3;
             transition: all 0.5s;

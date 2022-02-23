@@ -1,7 +1,7 @@
 @import "css/color.module.scss";
 
 body {
-    background-color: $gray;
+    background-color: var(--gray);
 }
 
 .container {
@@ -21,18 +21,18 @@ body {
 .social {
     margin: 20px 2px 0 2px; 
     border: none;
-    background-color: $gray;
+    background-color: var(--gray);
     font-size: 11px;
-    color: $green-100;
+    color: var(--green200);
 }
 
 .span {
     display: block;
     margin-top: 20px;
-    color: $green-200;
+    color: var(--gray200);
     cursor: pointer;
     &:hover {
-     color: $pink;
+     color: var(--pink);
     }
 }
 

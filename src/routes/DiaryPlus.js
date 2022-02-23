@@ -55,7 +55,7 @@ const DiaryPlus = () => {
             placeholder="일기 제목을 입력해주세요."
             onChange={onDiaryTitleChange}
             maxLength={100}
-            bgcolor={"#ffffff"}
+            backgroundColor={"var(--white)"}
             width={"400px"}
             required
           />
@@ -63,7 +63,7 @@ const DiaryPlus = () => {
           <TextArea id="diarytext" onChange={onDiaryTextChange} width={"400px"} placeholder="내용을 입력해주세요.">
             {diaryText}
           </TextArea>
-          <MyInput type="submit" value="등록완료" bgcolor={"#b9e3c6"} width={"400px"} fontcolor={"#1c1c1c"}/>
+          <MyInput type="submit" value="등록완료" backgroundColor={"var(--green)"} width={"400px"} fontcolor={"var(--black)"}/>
         </form>
       </div>
     </Container>

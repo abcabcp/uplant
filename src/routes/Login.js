@@ -77,8 +77,8 @@ const Login = () => {
             required
             value={email}
             onChange={onChange}
-            bgcolor={"#ffffff"}
-            fontcolor={"#1c1c1c"}
+            backgroundColor={"var(--white)"}
+            fontcolor={"var(--black)"}
           />
           <MyInput
             name="password"
@@ -87,19 +87,20 @@ const Login = () => {
             required
             value={password}
             onChange={onChange}
-            bgcolor={"#ffffff"}
-            fontcolor={"#1c1c1c"}
+            backgroundColor={"var(--white)"}
+            fontcolor={"var(--black)"}
           />
           <MyInput
             type="submit"
             value={newAccount ? "JOIN" : "LOGIN"}
-            hover={true}
+            backgroundColor={"var(--green)"}
           />
           {error}
         </form>
         <span
           onClick={toggleAccount}
           className={`${styles.span} ${styles.span.hover}`}
+          style={{fontSize: "14px"}}
         >
           {newAccount ? "LOGIN" : "JOIN"}
         </span>

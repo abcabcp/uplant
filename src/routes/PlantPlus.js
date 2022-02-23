@@ -102,14 +102,14 @@ const PlantPlus = ({ userObj }) => {
         </div>
           <label className={styles.filebtn} for="img-input" >업로드</label>
           <input type="file" id="img-input" accept="image/*" onChange={onFileChange} style={{display:"none"}} required/>
-          <MyButton onClick={onClearAttachment} width={"145px"} color={"#1c1c1c"} className={styles.rebtn} backgroundColor={"#e5e5e5"}>다시 올리기</ MyButton>
+          <MyButton onClick={onClearAttachment} width={"145px"} color={"var(--black)"} className={styles.rebtn} backgroundColor={"var(--gray400)"}>다시 올리기</ MyButton>
         <MyInput
           value={kind}
           onChange={onKindChange}
           type="text"
           placeholder="식물의 종류를 입력해주세요"
           maxLength={30}
-          bgcolor={"#ffffff"}
+          backgroundColor={"var(--white)"}
           required
         />
         <MyInput
@@ -118,7 +118,7 @@ const PlantPlus = ({ userObj }) => {
           type="text"
           placeholder="식물의 애칭을 입력해주세요"
           maxLength={30}
-          bgcolor={"#ffffff"}
+          backgroundColor={"var(--white)"}
           required
         />
         <MyInput
@@ -127,10 +127,10 @@ const PlantPlus = ({ userObj }) => {
           type="date"
           placeholder="식물의 생일을 입력해주세요"
           maxLength={30}
-          bgcolor={"#ffffff"}
+          backgroundColor={"var(--white)"}
           required
         />
-        <MyInput type="submit" value="등록 완료" bgcolor={"#b9e3c6"} fontcolor={"#000000"}/>
+        <MyInput type="submit" value="등록 완료" backgroundColor={"var(--green)"} fontcolor={"var(--black)"}/>
       </form>
     </Container>
   );

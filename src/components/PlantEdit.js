@@ -107,7 +107,7 @@ const Plant = ({ PlantObj }) => {
   return (
     <div>
       {edit ? (
-        <Card bgColor="#F6F6F6">
+        <Card backgroundColor="#F6F6F6">
           <form onSubmit={onSubmit}>
           <label for="img-input" >업로드</label>
             <input
@@ -131,7 +131,7 @@ const Plant = ({ PlantObj }) => {
               placeholder="식물의 종류를 입력해주세요"
               maxLength={30}
               onChange={onNewKindChange}
-              bgcolor={"#ffffff"}
+              backgroundColor={"var(--white)"}
               required
             />
             <MyInput
@@ -140,7 +140,7 @@ const Plant = ({ PlantObj }) => {
               placeholder="식물의 애칭을 입력해주세요"
               onChange={onNewNicknameChange}
               maxLength={30}
-              bgcolor={"#ffffff"}
+              backgroundColor={"var(--white)"}
               required
             />
             <MyInput
@@ -148,12 +148,12 @@ const Plant = ({ PlantObj }) => {
               type="date"
               placeholder="식물의 생일을 입력해주세요"
               onChange={onNewBirthdateChange}
-              bgcolor={"#ffffff"}
+              backgroundColor={"var(--white)"}
               required
             />
             <div className={styles.editBtns}>
-              <MyButton onClick={toggleEdit} width={"145px"} backgroundColor={"#e5e5e5"}>취소</MyButton>
-              <MyInput type="submit" value="수정 완료" bgcolor={"#b9e3c6"} width={"145px"}/>
+              <MyButton onClick={toggleEdit} width={"145px"} backgroundColor={"var(--gray400)"}>취소</MyButton>
+              <MyInput type="submit" value="수정 완료" backgroundColor={"var(--green)"} width={"145px"}/>
             </div>
           </form>
         </Card>

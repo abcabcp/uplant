@@ -4,8 +4,8 @@ const TextArea = styled.textarea`
     width: ${(props) => props.width || "300px" };
     display: block;
     margin: 0 auto;
-    background-color: #ffffff;
-    color: #1c1c1c;
+    background-color: var(--white);
+    color: var(--black);
     border: none;
     border-radius: 20px;
     margin-bottom: 10px;

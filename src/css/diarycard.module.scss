@@ -4,17 +4,17 @@
     font-size: 14px;
     margin-left: 300px;
     margin-bottom: 5px;
-    color: $gray-300;
+    color: var(--gray300);
 }
 
 .title {
     text-align: center;
     width: 300px;
     margin: 0 auto;
-    border-bottom: 2px solid $gray; 
+    border-bottom: 2px solid var(--gray); 
     padding: 2px 20px;
     font-size: 18px;
-    color: $green-200;
+    color: var(--gray200);
 }
 
 .text {

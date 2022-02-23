@@ -8,7 +8,7 @@ const MyLogOut = styled.button`
   display: block;
   margin: 0 auto;
   font-family: "GangwonEdu_OTFBoldA";
-  color: #4e6b57;
+  color: var(--green200);
 `;
 
 const LogOut = () => {

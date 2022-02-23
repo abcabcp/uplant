@@ -62,14 +62,14 @@ const Diary = ({ DiaryObj }) => {
   return (
     <div>
       {edit ? (
-        <Card bgColor="#F6F6F6">
+        <Card backgroundColor="#F6F6F6">
           <form onSubmit={onSubmit}>
             <MyInput
               value={newDiaryTitle}
               type="text"
               placeholder="일기 제목을 입력해주세요."
               onChange={onNewDiaryTitleChange}
-              bgcolor={"#ffffff"}
+              backgroundColor={"var(--white)"}
               required
             />
              <label for="diarytext"></label>
@@ -77,8 +77,8 @@ const Diary = ({ DiaryObj }) => {
             {newDiaryText}
             </TextArea>
             <div className={styles.editBtns}>
-            <MyButton onClick={toggleEdit}  width={"145px"} backgroundColor={"#e5e5e5"}>취소</MyButton>
-            <MyInput type="submit" value="수정 완료" bgcolor={"#b9e3c6"} width={"145px"}/>
+            <MyButton onClick={toggleEdit}  width={"145px"} backgroundColor={"var(--gray400)"}>취소</MyButton>
+            <MyInput type="submit" value="수정 완료" backgroundColor={"var(--green)"} width={"145px"}/>
             </div>
           </form>
           </Card>

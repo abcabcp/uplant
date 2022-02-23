@@ -9,7 +9,7 @@
     margin-bottom: 10px;
     width: 300px;
     height: 150px;
-    background-color: $gray-100;
+    background-color: var(--gray100);
     border-radius: 25px;
 }
 
@@ -21,7 +21,7 @@
     height: 120px;
     margin: 0 auto;
     border-radius: 25px;
-    background-color: $gray-200;
+    background-color: var(--gray200);
 }
 
 .image {
@@ -55,5 +55,5 @@
     background-color: #e5e5e5;
     margin-right: 10px;   
     margin-bottom: 10px;
-    color: $black;
+    color: var(--black);
 }
