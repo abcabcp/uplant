@@ -4,7 +4,7 @@ const MyButton = styled.button`
   width: ${(props) => props.width || "300px"};
   background-color: ${(props) => props.backgroundColor || "var(--gray100)"};
   color: ${(props) => props.color || "var(--black)"};
-  height: ${(props) => props.height ||"40px"};
+  height: ${(props) => props.height ||"43px"};
   border: none;
   text-align: center;
   border-radius: 20px;
@@ -24,8 +24,8 @@ const MyButton = styled.button`
     `}
 
     ${(props) => props.handleBtn && css`
-      width: 25px;
-      height: 20px;
+      width: 30px;
+      height: 30px;
       background-color: var(--gray50);
     `}
 `;

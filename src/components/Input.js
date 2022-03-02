@@ -8,12 +8,12 @@ const MyInput = styled.input`
   margin: 0 auto;
   font-family: "GangwonEdu_OTFBoldA";
   padding: 10px;
-  height: ${(props) => props.height || "40px"};
+  height: ${(props) => props.height || "43px"};
   border: none;
   text-align: center;
   border-radius: 20px;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 13px;
 
   &::placeholder {
     color: var(--gray300);

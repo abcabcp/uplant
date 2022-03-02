@@ -1,4 +1,4 @@
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import { Route, Routes, HashRouter} from "react-router-dom";
 import Login from "routes/Login";
 import PlantList from "routes/PlantList";
 import PlantPlus from "routes/PlantPlus";
@@ -8,7 +8,7 @@ import NotFound from "routes/NotFound";
 
 const AppRouter = ({ loginIn }) => {
   return (
-    <Router>
+    <HashRouter>
       <Routes>
         {loginIn ? (
           <Route path="/" element={<PlantList />} exact={true} />
@@ -22,7 +22,7 @@ const AppRouter = ({ loginIn }) => {
         <Route path="*" element={<NotFound />}></Route>
         <Route path="/" element={<Login />} />
       </Routes>
-    </Router>
+    </HashRouter>
   );
 };
 export default AppRouter;

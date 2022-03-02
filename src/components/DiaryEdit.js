@@ -82,9 +82,9 @@ const Diary = ({ DiaryObj }) => {
           </Card>
       ) : (
         <div>
-          <div className={diary.writedate}>{dateFormat}</div>
           <Card className={diary.contents}>
             <h2 className={diary.title}>{DiaryObj.d_title}</h2>
+            <div className={diary.writedate}>{dateFormat}</div>
             <div className={diary.text}>{DiaryObj.d_text}</div>
             <div className={diary.handleBtn}>
               <MyButton onClick={toggleEdit} handleBtn={true}>

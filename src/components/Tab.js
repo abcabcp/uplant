@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const Tab = styled(Link)`
     display: inline-grid;
-    width: ${(props) => props.width ||"80px"};
-    height: 24px;
-    line-height: ${(props) => props.lineHeight || "28px" };
+    width: ${(props) => props.width ||"75px"};
+    height: 30px;
+    line-height: ${(props) => props.lineHeight || "33px" };
     text-align: center;
     margin: 0 10px 20px 0;
     border-radius: 20px;
@@ -15,14 +15,16 @@ const Tab = styled(Link)`
     `}
 
     ${(props) => props.plus && css`
-        margin-left: 180px;
-        width: 25px;
-        line-height: 30px;
+        margin-left: 138px;
+        width: 30px;
+        line-height: 36px;
+        border: none;
+        background-color: var(--gray100);
         &:hover {
-        background-color: var(--green200);
-        transition: all 0.5s;
-        color: #ffffff;
-      };
+            transition: all 0.5s;
+            background-color: var(--green200);
+            color: var(--white);
+        }
     `}
 
     ${(props) => props.active && css`

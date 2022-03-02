@@ -5,7 +5,7 @@ const MyHeader = styled.div`
   width: 100%;
   height: ${(props) => props.height || '50px'};
   text-align: center;
-  margin: 30px 0 30px 0;
+  margin: 15px 0 35px 0;
   line-height: 57px;
   font-size: 35px;
   text-indent: -20px;

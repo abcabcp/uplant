@@ -56,14 +56,14 @@ const DiaryPlus = () => {
             onChange={onChange}
             maxLength={100}
             backgroundColor={"var(--white)"}
-            width={"400px"}
+            width={"300px"}
             required
           />
           <label for="diarytext"></label>
-          <TextArea id="diarytext" name="diaryText" onChange={onChange} width={"400px"} placeholder="내용을 입력해주세요.">
+          <TextArea id="diarytext" name="diaryText" onChange={onChange} width={"300px"} placeholder="내용을 입력해주세요.">
             {diaryText}
           </TextArea>
-          <MyInput type="submit" value="등록완료" backgroundColor={"var(--green)"} width={"400px"} fontcolor={"var(--black)"}/>
+          <MyInput type="submit" value="등록완료" backgroundColor={"var(--green)"} width={"300px"} fontcolor={"var(--black)"}/>
         </form>
       </div>
     </Container>

@@ -1,20 +1,21 @@
 @import "css/color.module.scss";
 
 .writedate {
-    font-size: 14px;
-    margin-left: 300px;
-    margin-bottom: 5px;
-    color: var(--gray300);
+    font-size: 13px;
+    text-align: right;
+    margin-right: 20px;
+    margin-top: 10px;
+    color: var(--gray200);
 }
 
 .title {
     text-align: center;
-    width: 300px;
+    width: 270px;
     margin: 0 auto;
     border-bottom: 2px solid var(--gray); 
     padding: 2px 20px;
     font-size: 18px;
-    color: var(--gray200);
+    color: var(--gray300);
 }
 
 .text {
@@ -24,6 +25,6 @@
 }
 
 .handleBtn {
-    margin-top: 10px;
-    margin-left: 310px;
+    margin-top: 5px;
+    margin-left: 240px;
 }
