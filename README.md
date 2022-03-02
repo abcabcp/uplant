@@ -23,7 +23,7 @@
 ### ✔ PlantList & PlantPlus & PlantEdit
 |PlantList|DiaryList|
 |---|---|
-|<img src="img/plant.png"/>|<img src="img/Diary.png"/>|
+|<img src="img/plant.png"/>|<img src="img/iary.png"/>|
 
 
 ### ✔ PlantPlus & DiaryPlus
