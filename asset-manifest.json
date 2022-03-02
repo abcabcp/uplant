@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/uplant/static/css/main.baa66027.css",
-    "main.js": "/uplant/static/js/main.afa37674.js",
+    "main.css": "/uplant/static/css/main.d316f3f8.css",
+    "main.js": "/uplant/static/js/main.6cfd69ff.js",
     "static/media/logo.png": "/uplant/static/media/logo.a5b1ee69b7e7af97cee6.png",
     "index.html": "/uplant/index.html",
-    "main.baa66027.css.map": "/uplant/static/css/main.baa66027.css.map",
-    "main.afa37674.js.map": "/uplant/static/js/main.afa37674.js.map"
+    "main.d316f3f8.css.map": "/uplant/static/css/main.d316f3f8.css.map",
+    "main.6cfd69ff.js.map": "/uplant/static/js/main.6cfd69ff.js.map"
   },
   "entrypoints": [
-    "static/css/main.baa66027.css",
-    "static/js/main.afa37674.js"
+    "static/css/main.d316f3f8.css",
+    "static/js/main.6cfd69ff.js"
   ]
 }
