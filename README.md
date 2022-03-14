@@ -20,7 +20,7 @@
 |----|----|
 |<img src="img/login.png"/>|<img src="img/join.png"/>
 
-### ✔ PlantList & PlantPlus & PlantEdit
+### ✔ PlantList & DiaryList
 |PlantList|DiaryList|
 |---|---|
 |<img src="img/plant.png"/>|<img src="img/diary.png"/>|
