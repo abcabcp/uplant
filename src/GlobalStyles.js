@@ -1,7 +1,7 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
-import "css/fonts/font.module.scss";
-import "css/color.module.scss";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
+import 'css/fonts/font.module.scss';
+import 'css/color.module.scss';
 
 const GlobalStyles = createGlobalStyle` 
 
