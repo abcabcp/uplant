@@ -8,14 +8,13 @@ import TextArea from 'components/TextArea';
 import styles from 'css/diaryplus.module.scss';
 
 const DiaryPlus = () => {
+    const uid = getAuth().currentUser.uid;
+    const history = useNavigate();
     const [inputs, setInputs] = useState({
         diaryTitle: '',
         diaryText: '',
     });
     const { diaryTitle, diaryText } = inputs;
-
-    const uid = getAuth().currentUser.uid;
-    const history = useNavigate();
 
     const onChange = event => {
         const { name, value } = event.target;
@@ -25,6 +24,11 @@ const DiaryPlus = () => {
         });
     };
 
+    // * diarys 컬렉션
+    //   d_title: 일기 제목
+    //   d_text: 일기 내용
+    //   d_auth: 작성자 아이디
+    //   createAt: 작성 일자
     const onSubmit = async event => {
         event.preventDefault();
 
