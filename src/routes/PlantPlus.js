@@ -9,6 +9,11 @@ import MyInput from 'components/Input';
 import styles from 'css/plantplus.module.scss';
 
 const PlantPlus = () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const uid = user.uid;
+    const history = useNavigate();
+
     const [attachment, setAttachment] = useState('');
     const [inputs, setInputs] = useState({
         kind: '',
@@ -26,11 +31,14 @@ const PlantPlus = () => {
         });
     };
 
-    const auth = getAuth();
-    const user = auth.currentUser;
-    const uid = user.uid;
-    const history = useNavigate();
-
+    // * plants 컬렉션
+    //   p_kind: 식물 종류
+    //   p_nickname: 식물 애칭
+    //   p_birthDate: 분양 일자
+    //   p_auth: 작성자 아이디
+    //   p_nowwaterday: 마지막으로 물준 날짜
+    //   createAt: 작성 일자
+    //   attachmentUrl: 이미지 url
     const onSubmit = async event => {
         event.preventDefault();
         let attachmentUrl = '';
@@ -62,8 +70,10 @@ const PlantPlus = () => {
         history('/PlantList');
     };
 
+    //다시 올리기 클릭시 attachmentUrl을 빈값으로 변경
     const onClearAttachment = () => setAttachment('');
 
+    //유저가 업로드한 이미지를 미리 확인
     const onFileChange = event => {
         const {
             target: { files },
